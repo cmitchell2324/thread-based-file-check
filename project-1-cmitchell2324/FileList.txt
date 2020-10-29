@@ -1,0 +1,3 @@
+./testdata/Text1.txt
+./testdata/Text2.txt
+./testdata/Text3.txt
