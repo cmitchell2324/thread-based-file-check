@@ -8,7 +8,7 @@ import java.util.*;
     a count is printed out which illustrates each word and its total count across all of the files. As the check is going on, each file is being checked for moderation if it contains 
     any bad phrases. All methods are appropriately synchronized so each thread will acquire the lock and release once it leaves the scope of the concurrentWork method. This version
     is slower than the thread-based serial version because you are creating three different threads to check three different files. It would be faster to check three files on one
-    thread since they are all doing the
+    thread since they are all doing the same work.
 */
 
 

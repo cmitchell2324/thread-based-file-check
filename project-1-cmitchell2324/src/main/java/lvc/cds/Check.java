@@ -13,12 +13,14 @@ public class Check implements Runnable{
     }
 
     public void run() {
+        // Thread will acquire lock for the run method and release once it has notified all other threads
         synchronized(this) {
             concurrentFileWork();
             notifyAll();
         }
     }
 
+    // Concurrent check of file (very similar to serial code, but spinning the work off to another thread is significantly faster)
     public synchronized void concurrentFileWork() {
         ArrayList<Integer> counts = new ArrayList<>();
         ArrayList<String> fileSet = new ArrayList<>();

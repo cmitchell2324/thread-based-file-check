@@ -23,6 +23,8 @@ public class ConcurrentFileCheck {
     private static BufferedReader reader = null;
     public static void main(String[] args) throws IOException {
         long start = System.currentTimeMillis();
+
+        // Instantiation of fileNames ArrayList that will contain the name of each text file to be checked
         ArrayList<String> fileNames = new ArrayList<>();
         File fileList = new File("FileList.txt");
         reader = new BufferedReader(new FileReader(fileList));
@@ -39,12 +41,13 @@ public class ConcurrentFileCheck {
             badPhrases.add(line1);
         }
     
+        // Launches a thread that will check all files in fileNames against all bad phrases in badPhrases.
         Thread thread = new Thread(new Check(fileNames, badPhrases));
         thread.start();
-        long end = System.currentTimeMillis() - start;
         try {
-            Thread.sleep(1000);
+            Thread.sleep(400);
         } catch (InterruptedException e) {}
+        long end = System.currentTimeMillis() - start;
         System.out.println("The total time to do the synchronous version is: " + end + " ms");
     }
 }
